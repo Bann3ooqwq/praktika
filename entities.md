@@ -3,41 +3,46 @@
 **Первичный ключ:** id (INT)
 | Атрибут | Тип | Обяз. | Ограничения |
 |---------|-----|-------|----------|
-| id | INT | Да | PK |
+| User_id | INT | Да | PK |
 | Fullname | VARCHAR(50) | Да | |
 | Mail | VARCHAR() | Да | формат |
-| role | VARCHAR(300) | Да | |
-
+| role | INT | Да |  |
+| phone | VARCHAR(11) | Да | формат |
 
 ## Сущность: Помещение
 **Назначение:** Хранение информации о помещении
 **Первичный ключ:** id (INT)
 | Атрибут | Тип | Обяз. | Ограничения |
 |---------|-----|-------|----------|
-| id | INT | Да | PK |
+| Room_id | INT | Да | PK |
 | Name | VARCHAR(50) | Да |  |
-| Description | VARCHAR(300) | Да |  |
+| capacity | INT | Да | изображение |
 | Time | VARCHAR(9) | Да | формат |
+| user_id | VARCHAR(30) | Да | FK id(user) |
+| price | VARCHAR(11) | Да | >=0 |
 
 ## Сущность: Заявка
 **Назначение:** Хранение информации о заявке
 **Первичный ключ:** id (INT)
 | Атрибут | Тип | Обяз. | Ограничения |
 |---------|-----|-------|----------|
-| id | INT | Да | PK |
-| Name | VARCHAR(50) | Да | |
-| User_id | VARCHAR(50) | Да | |
-| Time | VARCHAR(9) | Да | формат |
-| Room | VARCHAR(50) | Да | |
-| Payment method | VARCHAR(30) | Да | |
+| Booking_id | INT | Да | PK |
+| User_id | INT | Да | |
+| Room_id | INT | Да | |
+| Payment_method | VARCHAR(30) | Да | |
+| total_price | VARCHAR(11) | Нет | |
+| end_time | TIME | Да | |
+| start_time | TIME | Да | |
+| Date | DATE | Да | |
+| Status | VARCHAR(20) | Да | |
 
 ## Сущность: Отзыв
 **Назначение:** Хранение информации о почте клиента
 **Первичный ключ:** id (INT)
 | Атрибут | Тип | Обяз. | Ограничения |
 |---------|-----|-------|----------|
-| id | INT | Да | PK |
+| review_id | INT | Да | PK |
 | Fullname | VARCHAR(50) | Да | формат |
-| Description | VARCHAR(300) | Да | формат |
-| Stars | VARCHAR(5) | Да | формат |
-| Photo | VARCHAR() | Да | формат |
+| Content | TEXT | Нет | |
+| Rating | INT | Да | between 1 and 5 |
+| Booking_id | INT | Да | FK id(booking) |
